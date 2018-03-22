@@ -39,7 +39,10 @@ public class HomeController {
 		pageMaker.setTotalCount(service.selectTotalCount());
 		
 		try {
-			List<ProjectVO> list = service.listPage(cri.getPage());
+			List<ProjectVO> list = service.listCriteria(cri);
+		
+			logger.info("list: " + list.size());
+			
 			model.addAttribute("list", list);
 			model.addAttribute("pageMaker", pageMaker);
 		} catch (Exception e) {

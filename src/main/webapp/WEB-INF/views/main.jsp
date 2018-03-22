@@ -43,6 +43,7 @@
 				<table class="table table-bordered table-hover">
 				    <thead>
 				      <tr>
+				      	<th>번호</th>
 				        <th>프로젝트 이름</th>
 				        <th>시작날짜</th>
 				        <th>종료날짜</th>
@@ -52,7 +53,8 @@
 				    <tbody>
 				      <c:forEach var="project" items="${list }">
 				      	<tr>
-				      		<td><a href="readProject/${project.num }${pageMake.makeSearch(pageMake.cri.page) }">${project.name }</a></td>
+				      		<td>${project.num }</td>
+				      		<td><a href="readProject/${project.num 	}${pageMake.makeSearch(pageMake.cri.page) }">${project.name }</a></td>
 				      		<td> 
 				      			<fmt:formatDate pattern="yyyy-MM-dd" value="${project.startdate }"/>
 				      		</td>
@@ -73,7 +75,7 @@
 						<li><a href="${pageMaker.makeQuery(pageMaker.startPage - 1) }">&laquo;</a></li>
 					</c:if>
 					<c:forEach var="idx" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
-						<li ${pageMaker.cri.page == idx? 'class=active' : '' }><a href="${pageMaker.makeQuery(idx) }">${idx }</a></li>
+						<li ${pageMaker.cri.page == idx? 'class=active' : '' }><a href="/projectmanager${pageMaker.makeQuery(idx) }">${idx }</a></li>
 					</c:forEach>
 					<c:if test="${pageMaker.next }">
 						<li><a href="${pageMaker.makeQuery(pageMaker.endPage + 1 ) }">&raquo;</a></li>
