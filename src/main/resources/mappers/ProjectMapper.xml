@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dgit.persistence.ProjectDao">
+        
+    <insert id="insert">
+    	insert into project_manager(name, content, startdate, enddate, ing) values(#{name}, #{content}, #{startdate}, #{enddate}, #{ing})
+    </insert>
+    
+    <delete id="delete">
+        delete from project_manager where num = #{num}  
+    </delete>
+    
+    <update id="update">
+        update project_manager set name = #{name}, content = #{content}, 
+        startdate = #{startdate}, enddate = #{enddate}, ing = #{ing}  where num = #{num}
+    </update>
+    
+    <select id="selectAll" resultType="ProjectVO">
+        select * from project_manager
+   </select>
+    
+    <select id="selectByNum" resultType="ProjectVO">
+        select * from project_manager where num = #{num}
+    </select>
+    
+      <select id="listPage" resultType="ProjectVO">
+         select * from project_manager order by num desc, startdate desc limit #{page}, 10
+    </select>
+    
+    <select id="listCriteria" resultType="ProjectVO">
+        select * from project_manager order by num desc, startdate desc limit #{pageStart}, #{perPageNum}
+    </select>
+    
+    <select id="selectTotalCount" resultType="int">
+        select count(num) from project_manager
+    </select>
+  
+    
+</mapper>
